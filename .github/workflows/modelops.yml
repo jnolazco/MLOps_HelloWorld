@@ -1,0 +1,18 @@
+name: Modelops deploy
+
+on:
+  push:                # se dispara ante el "push" (ante cualquier cambio de dataset, datos de entrenamiento, cambio en el model ya entrenado, etc.
+    branches: [ main ]
+  pull_request:
+    branches: [ main ] # otra manera de mover el código (este es cuando se trabaja cpo equipos.)
+
+jobs:        # conjunto de instrucciones que queremos que haga.
+  build:     # crea un máquina virtual
+    runs-on: ubuntu-latest            # la máquina virtual se le asignaría la última versión del SO ubuntu.
+    container: adsoft/aiops:latest    # se levanta un docker configurado con las herramientas que vamos a utilizar. 
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: hello-world
+      run: echo “hello world workflows …”
+
